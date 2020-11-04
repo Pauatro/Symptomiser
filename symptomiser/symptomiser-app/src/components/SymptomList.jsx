@@ -47,9 +47,9 @@ export default function( { goToDetails } ) {
     }
   }
 
-  const submitSymptomList = ()=>{
+  const submitSymptomList = async ()=>{
     try{
-      registerSymptomList()
+      await registerSymptomList()
       setAskEmail(true)
 
     }catch(error){
@@ -59,12 +59,12 @@ export default function( { goToDetails } ) {
     }
   }
 
-  const sendEmail = event=>{
+  const sendEmail = async (event)=>{
     event.preventDefault()
     
     const email = event.target.form.email.value
     try{
-      sendSymptomlistByEmail(email)
+      await sendSymptomlistByEmail(email)
       setFeedback({level: "success", message: `We have sent an e-mail to ${email} with the symptom list`})
 
     }catch(error){
